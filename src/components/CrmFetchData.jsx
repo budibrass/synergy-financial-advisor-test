@@ -9,8 +9,11 @@ import {
   Dropdown,
   Space,
   Checkbox,
+  Row,
+  Col,
+  Card
 } from "antd";
-import { PlusCircleOutlined } from "@ant-design/icons";
+import { PlusCircleOutlined, WarningOutlined } from "@ant-design/icons";
 import TableData from "../components/Table";
 
 const { Content } = Layout;
@@ -48,105 +51,106 @@ const itemsDropdown = [
     label: "Client",
     children: (
       // ERROR CARD
-      // <Card
-      //   style={{
-      //     height: "475px",
-      //     background: "#FFE4E8",
-      //     textAlign: "center",
-      //   }}
-      // >
-      //   <div>
-      //     <Row justify={"center"}>
-      //       <Col>
-      //         <WarningOutlined
-      //           style={{
-      //             color: "red",
-      //             fontSize: "16px",
-      //             // margin: 'auto'
-      //           }}
-      //         />
-      //       </Col>
-      //     </Row>
-      //     <Row justify={"center"}>
-      //       <Col>Opps! Unable to load clients</Col>
-      //     </Row>
-      //     <Row justify={"center"}>
-      //       <Col>Something went wrong that we didn't anticipate.</Col>
-      //     </Row>
-      //   </div>
-      // </Card>
+      <Card
+        style={{
+          height: "475px",
+          background: "#FFE4E8",
+          textAlign: "center",
+          margin: 'auto'
+        }}
+      >
+        <div>
+          <Row justify={"center"}>
+            <Col>
+              <WarningOutlined
+                style={{
+                  color: "brown",
+                  fontSize: "16px",
+                  // margin: 'auto'
+                }}
+              />
+            </Col>
+          </Row>
+          <Row justify={"center"}>
+            <Col style={{ fontSize: '16px', color: '#89123E' }}>Opps! Unable to load clients</Col>
+          </Row>
+          <Row justify={"center"}>
+            <Col style={{ fontSize: '14px', color: '#89123E' }}>Something went wrong that we didn't anticipate.</Col>
+          </Row>
+        </div>
+      </Card>
 
       // FETCH Data
-      <div>
-        <Search
-          placeholder="input search text"
-          allowClear
-          // onSearch={onSearch}
-          style={{
-            width: "320px",
-            marginBottom: "10px",
-            marginRight: "10px",
-          }}
-        />
-        <Button
-          style={{
-            borderRadius: "16px",
-            background: "#F9FAFB",
-            marginRight: "10px",
-          }}
-        >
-          <Dropdown
-            menu={{
-              items,
-            }}
-            trigger={["click"]}
-          >
-            <a onClick={(e) => e.preventDefault()}>
-              <Space>
-                <PlusCircleOutlined />
-                Gender
-              </Space>
-            </a>
-          </Dropdown>
-        </Button>
-        <Button
-          style={{
-            borderRadius: "16px",
-            background: "#F9FAFB",
-            marginRight: "10px",
-          }}
-        >
-          <Dropdown
-            menu={{
-              items,
-            }}
-            trigger={["click"]}
-          >
-            <a onClick={(e) => e.preventDefault()}>
-              <Space>
-                <PlusCircleOutlined />
-                Marital Status
-              </Space>
-            </a>
-          </Dropdown>
-        </Button>
-        <Button style={{ borderRadius: "16px", background: "#F9FAFB" }}>
-          <Dropdown
-            menu={{
-              items,
-            }}
-            trigger={["click"]}
-          >
-            <a onClick={(e) => e.preventDefault()}>
-              <Space>
-                <PlusCircleOutlined />
-                Employment
-              </Space>
-            </a>
-          </Dropdown>
-        </Button>
-        <TableData />
-      </div>
+      // <div>
+      //   <Search
+      //     placeholder="input search text"
+      //     allowClear
+      //     // onSearch={onSearch}
+      //     style={{
+      //       width: "320px",
+      //       marginBottom: "10px",
+      //       marginRight: "10px",
+      //     }}
+      //   />
+      //   <Button
+      //     style={{
+      //       borderRadius: "16px",
+      //       background: "#F9FAFB",
+      //       marginRight: "10px",
+      //     }}
+      //   >
+      //     <Dropdown
+      //       menu={{
+      //         items,
+      //       }}
+      //       trigger={["click"]}
+      //     >
+      //       <a onClick={(e) => e.preventDefault()}>
+      //         <Space>
+      //           <PlusCircleOutlined />
+      //           Gender
+      //         </Space>
+      //       </a>
+      //     </Dropdown>
+      //   </Button>
+      //   <Button
+      //     style={{
+      //       borderRadius: "16px",
+      //       background: "#F9FAFB",
+      //       marginRight: "10px",
+      //     }}
+      //   >
+      //     <Dropdown
+      //       menu={{
+      //         items,
+      //       }}
+      //       trigger={["click"]}
+      //     >
+      //       <a onClick={(e) => e.preventDefault()}>
+      //         <Space>
+      //           <PlusCircleOutlined />
+      //           Marital Status
+      //         </Space>
+      //       </a>
+      //     </Dropdown>
+      //   </Button>
+      //   <Button style={{ borderRadius: "16px", background: "#F9FAFB" }}>
+      //     <Dropdown
+      //       menu={{
+      //         items,
+      //       }}
+      //       trigger={["click"]}
+      //     >
+      //       <a onClick={(e) => e.preventDefault()}>
+      //         <Space>
+      //           <PlusCircleOutlined />
+      //           Employment
+      //         </Space>
+      //       </a>
+      //     </Dropdown>
+      //   </Button>
+      //   <TableData />
+      // </div>
     ),
   },
   {

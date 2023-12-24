@@ -8,10 +8,12 @@ import {
 } from "@ant-design/icons";
 import logo from "../assets/images/logo.svg";
 import Image from "next/image";
+import { useRouter } from 'next/navigation'
 
 const { Header } = Layout;
 
 function Navbar() {
+  const router = useRouter()
   return (
     <Header
       className="header"
@@ -37,26 +39,32 @@ function Navbar() {
               {
                 label: "Acme Corp",
                 key: "acmeCorp",
+                onClick: ()=> router.push('/')
               },
               {
                 label: "Dashboard",
                 key: "dashboard",
+                onClick: ()=> router.push('/dashboard')
               },
               {
                 label: "CRM",
                 key: "crm",
+                onClick: ()=> router.push('/')
               },
               {
                 label: "Submission",
                 key: "submission",
+                onClick: ()=> router.push('/submission')
               },
               {
                 label: "Commission",
                 key: "commission",
+                onClick: ()=> router.push('/commission')
               },
               {
                 label: "LMS",
                 key: "lms",
+                onClick: ()=> router.push('/lms')
               },
             ]}
           ></Menu>

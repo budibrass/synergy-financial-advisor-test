@@ -202,10 +202,8 @@ const data = [
 
 const App = () => {
   return (
-    <Layout className="container" style={{ minHeight: "130vh" }}>
-      {/* Navbar Start */}
+    <Layout className="container" style={{ minHeight: "100vh" }}>
       <Navbar />
-      {/* Navbar End */}
 
       {/* CRM Start */}
       <CrmFetchData />
