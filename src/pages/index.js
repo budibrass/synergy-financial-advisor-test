@@ -204,14 +204,7 @@ const App = () => {
   return (
     <Layout className="container" style={{ minHeight: "100vh" }}>
       <Navbar />
-
-      {/* CRM Start */}
       <CrmFetchData />
-      {/* CRM End */}
-
-      {/* 404 Not Found Start*/}
-      {/* <NotFound /> */}
-      {/* 404 Not End */}
 
       {/* Profile Clients Start */}
       {/* <DetailProfileCilents /> */}
