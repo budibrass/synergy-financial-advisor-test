@@ -1,41 +1,20 @@
-"use client";
+import React from "react";
 import {
-  Avatar,
-  Col,
-  Menu,
-  Row,
   Layout,
   Divider,
   Typography,
   Tabs,
-  Card,
   Button,
-  Table,
   Input,
-  Dropdown, 
+  Dropdown,
   Space,
-  Checkbox
+  Checkbox,
 } from "antd";
-import {
-  BellOutlined,
-  SettingOutlined,
-  SearchOutlined,
-  UserOutlined,
-  WarningOutlined,
-  ArrowLeftOutlined,
-  DownOutlined,
-  PlusCircleOutlined
-} from "@ant-design/icons";
-import logo from "../assets/images/logo.svg";
-import Image from "next/image";
+import { PlusCircleOutlined } from "@ant-design/icons";
 import TableData from "../components/Table";
-import Navbar from "@/components/Navbar";
-import NotFound from "@/components/NotFound";
-import DetailProfileCilents from "@/components/DetailProfileCilents";
-import CrmFetchData from "@/components/CrmFetchData";
 
-const { Content, Header } = Layout;
-const { Text, Link, Title } = Typography;
+const { Content } = Layout;
+const { Title } = Typography;
 const { Search } = Input;
 
 const onChange = (key) => {
@@ -44,22 +23,24 @@ const onChange = (key) => {
 
 const items = [
   {
-    label: 
-    <Checkbox onClick={()=> console.log(`MASUK`)}>1st menu item</Checkbox>,
-    key: '0',
+    label: (
+      <Checkbox onClick={() => console.log(`MASUK`)}>1st menu item</Checkbox>
+    ),
+    key: "0",
   },
   {
-    label: 
-    <Checkbox onClick={()=> console.log(`MASUK`)}>2st menu item</Checkbox>,
-    key: '1',
+    label: (
+      <Checkbox onClick={() => console.log(`MASUK`)}>2st menu item</Checkbox>
+    ),
+    key: "1",
   },
   {
-    label: 
-    <Checkbox onClick={()=> console.log(`MASUK`)}>3st menu item</Checkbox>,
-    key: '3',
+    label: (
+      <Checkbox onClick={() => console.log(`MASUK`)}>3st menu item</Checkbox>
+    ),
+    key: "3",
   },
 ];
-
 
 const itemsDropdown = [
   {
@@ -103,50 +84,62 @@ const itemsDropdown = [
           // onSearch={onSearch}
           style={{
             width: "320px",
-            marginBottom: '10px',
-            marginRight: '10px'
+            marginBottom: "10px",
+            marginRight: "10px",
           }}
         />
-        <Button style={{ borderRadius: '16px', background: '#F9FAFB', marginRight: '10px' }}>
+        <Button
+          style={{
+            borderRadius: "16px",
+            background: "#F9FAFB",
+            marginRight: "10px",
+          }}
+        >
           <Dropdown
             menu={{
-              items
+              items,
             }}
-            trigger={['click']}
+            trigger={["click"]}
           >
             <a onClick={(e) => e.preventDefault()}>
               <Space>
-              <PlusCircleOutlined />
+                <PlusCircleOutlined />
                 Gender
               </Space>
             </a>
           </Dropdown>
         </Button>
-        <Button style={{ borderRadius: '16px', background: '#F9FAFB', marginRight: '10px' }}>
+        <Button
+          style={{
+            borderRadius: "16px",
+            background: "#F9FAFB",
+            marginRight: "10px",
+          }}
+        >
           <Dropdown
             menu={{
-              items
+              items,
             }}
-            trigger={['click']}
+            trigger={["click"]}
           >
             <a onClick={(e) => e.preventDefault()}>
               <Space>
-              <PlusCircleOutlined />
+                <PlusCircleOutlined />
                 Marital Status
               </Space>
             </a>
           </Dropdown>
         </Button>
-        <Button style={{ borderRadius: '16px', background: '#F9FAFB' }}>
+        <Button style={{ borderRadius: "16px", background: "#F9FAFB" }}>
           <Dropdown
             menu={{
-              items
+              items,
             }}
-            trigger={['click']}
+            trigger={["click"]}
           >
             <a onClick={(e) => e.preventDefault()}>
               <Space>
-              <PlusCircleOutlined />
+                <PlusCircleOutlined />
                 Employment
               </Space>
             </a>
@@ -170,56 +163,67 @@ const itemsDropdown = [
 
 const columns = [
   {
-    title: 'Name',
-    dataIndex: 'name',
+    title: "Name",
+    dataIndex: "name",
     render: (text) => <a>{text}</a>,
   },
   {
-    title: 'Address',
-    dataIndex: 'address',
+    title: "Address",
+    dataIndex: "address",
   },
 ];
 const data = [
   {
-    key: '1',
-    name: 'John Brown',
-    money: '￥300,000.00',
-    address: 'New York No. 1 Lake Park',
+    key: "1",
+    name: "John Brown",
+    money: "￥300,000.00",
+    address: "New York No. 1 Lake Park",
   },
   {
-    key: '2',
-    name: 'Jim Green',
-    money: '￥1,256,000.00',
-    address: 'London No. 1 Lake Park',
+    key: "2",
+    name: "Jim Green",
+    money: "￥1,256,000.00",
+    address: "London No. 1 Lake Park",
   },
   {
-    key: '3',
-    name: 'Joe Black',
-    money: '￥120,000.00',
-    address: 'Sydney No. 1 Lake Park',
+    key: "3",
+    name: "Joe Black",
+    money: "￥120,000.00",
+    address: "Sydney No. 1 Lake Park",
   },
 ];
 
-const App = () => {
+const CrmFetchData = () => {
   return (
-    <Layout className="container" style={{ minHeight: "130vh" }}>
-      {/* Navbar Start */}
-      <Navbar />
-      {/* Navbar End */}
+    <Content style={{ background: "#ffffff", padding: "0 48px" }}>
+      <div
+        className="pageHeader"
+        style={{
+          top: "102px",
+          height: "59px",
+          // left: '112px',
+          gap: "20px",
+          border: "20px",
+          // background: "brown",
+          // borderRadius: "20px"
+        }}
+      >
+        <Title level={4} style={{ color: "black", paddingTop: "10px" }}>
+          CRM
+        </Title>
+        <Divider />
+      </div>
 
-      {/* CRM Start */}
-      <CrmFetchData />
-      {/* CRM End */}
-
-      {/* 404 Not Found Start*/}
-      {/* <NotFound /> */}
-      {/* 404 Not End */}
-
-      {/* Profile Clients Start */}
-      {/* <DetailProfileCilents /> */}
-      {/* Profile Clients End */}
-    </Layout>
+      <div className="tabs">
+        <Tabs
+          style={{ height: "36px" }}
+          defaultActiveKey="1"
+          items={itemsDropdown}
+          onChange={onChange}
+        />
+      </div>
+    </Content>
   );
 };
 
-export default App;
+export default CrmFetchData;
