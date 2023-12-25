@@ -19,12 +19,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getData } from "@/reducer/user";
 import Loading from "@/components/Loading";
 
-const { Search } = Input;
-
-const onChange = (key) => {
-  console.log(key);
-};
-
 const items = [
   {
     label: 
@@ -43,156 +37,17 @@ const items = [
   },
 ];
 
-const itemsDropdown = [
-  {
-    key: "1",
-    label: "Client",
-    children: (
-      // ERROR CARD
-      // <Card
-      //   style={{
-      //     height: "475px",
-      //     background: "#FFE4E8",
-      //     textAlign: "center",
-      //   }}
-      // >
-      //   <div>
-      //     <Row justify={"center"}>
-      //       <Col>
-      //         <WarningOutlined
-      //           style={{
-      //             color: "red",
-      //             fontSize: "16px",
-      //             // margin: 'auto'
-      //           }}
-      //         />
-      //       </Col>
-      //     </Row>
-      //     <Row justify={"center"}>
-      //       <Col>Opps! Unable to load clients</Col>
-      //     </Row>
-      //     <Row justify={"center"}>
-      //       <Col>Something went wrong that we didn't anticipate.</Col>
-      //     </Row>
-      //   </div>
-      // </Card>
-
-      // FETCH Data
-      <div>
-        <Search
-          placeholder="input search text"
-          allowClear
-          // onSearch={onSearch}
-          style={{
-            width: "320px",
-            marginBottom: '10px',
-            marginRight: '10px'
-          }}
-        />
-        <Button style={{ borderRadius: '16px', background: '#F9FAFB', marginRight: '10px' }}>
-          <Dropdown
-            menu={{
-              items
-            }}
-            trigger={['click']}
-          >
-            <a onClick={(e) => e.preventDefault()}>
-              <Space>
-              <PlusCircleOutlined />
-                Gender
-              </Space>
-            </a>
-          </Dropdown>
-        </Button>
-        <Button style={{ borderRadius: '16px', background: '#F9FAFB', marginRight: '10px' }}>
-          <Dropdown
-            menu={{
-              items
-            }}
-            trigger={['click']}
-          >
-            <a onClick={(e) => e.preventDefault()}>
-              <Space>
-              <PlusCircleOutlined />
-                Marital Status
-              </Space>
-            </a>
-          </Dropdown>
-        </Button>
-        <Button style={{ borderRadius: '16px', background: '#F9FAFB' }}>
-          <Dropdown
-            menu={{
-              items
-            }}
-            trigger={['click']}
-          >
-            <a onClick={(e) => e.preventDefault()}>
-              <Space>
-              <PlusCircleOutlined />
-                Employment
-              </Space>
-            </a>
-          </Dropdown>
-        </Button>
-        <TableData />
-      </div>
-    ),
-  },
-  {
-    key: "2",
-    label: "Policy",
-    children: "Policy Tabs",
-  },
-  {
-    key: "3",
-    label: "Support",
-    children: "Support Tabs",
-  },
-];
-
-const columns = [
-  {
-    title: 'Name',
-    dataIndex: 'name',
-    render: (text) => <a>{text}</a>,
-  },
-  {
-    title: 'Address',
-    dataIndex: 'address',
-  },
-];
-const data = [
-  {
-    key: '1',
-    name: 'John Brown',
-    money: '￥300,000.00',
-    address: 'New York No. 1 Lake Park',
-  },
-  {
-    key: '2',
-    name: 'Jim Green',
-    money: '￥1,256,000.00',
-    address: 'London No. 1 Lake Park',
-  },
-  {
-    key: '3',
-    name: 'Joe Black',
-    money: '￥120,000.00',
-    address: 'Sydney No. 1 Lake Park',
-  },
-];
 
 const App = () => {
   const dispatch = useDispatch();
-  const value = useSelector(state => state.user.value);
   const data = useSelector(state => state.user.data);
-  const isLoading = useSelector(state => state.user.isLoading); 
+  const isLoading = useSelector(state => state.user.isLoading);
+  // const [dataTable, setDataTable] = useState([]) ;
 
   useEffect(() => {
     dispatch(getData());
   }, []);
 
-  // console.log(data, `<<< data`);
   return (
     <>
     {isLoading ? <Loading /> : <Layout className="container" style={{ minHeight: "100vh" }}>

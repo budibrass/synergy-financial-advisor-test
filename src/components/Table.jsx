@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Table } from 'antd';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const columns = [
   {
@@ -25,6 +27,9 @@ const columns = [
     dataIndex: 'dob',
     onFilter: (value, record) => record.dob.indexOf(value) === 0,
     sorter: (a, b) => a.dob.length - b.dob.length,
+    render: (dob) => {
+      return dob.slice(0, 10)
+    }
   },
   {
     title: 'Marital Status',
@@ -38,58 +43,6 @@ const columns = [
     onFilter: (value, record) => record.employmentStatus.indexOf(value) === 0,
     sorter: (a, b) => a.employmentStatus.length - b.employmentStatus.length,
   },
-];
-
-const data = [
-    {
-      key: '1',
-      name: 'John Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park',
-    },
-    {
-      key: '2',
-      name: 'Jim Green',
-      age: 42,
-      address: 'London No. 1 Lake Park',
-    },
-    {
-      key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sydney No. 1 Lake Park',
-    },
-    {
-      key: '4',
-      name: 'Jim Red',
-      age: 32,
-      address: 'London No. 2 Lake Park',
-    },
-    {
-      key: '5',
-      name: 'John Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park',
-    },
-    {
-      key: '6',
-      name: 'Jim Green',
-      age: 42,
-      address: 'London No. 1 Lake Park',
-    },
-    {
-      key: '7',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sydney No. 1 Lake Park',
-    },
-    {
-      key: '8',
-      name: 'Jim Red',
-      age: 32,
-      address: 'London No. 2 Lake Park',
-    },
-    
 ];
 
 const rowSelection = {
@@ -107,20 +60,45 @@ const onChange = (pagination, filters, sorter, extra) => {
   console.log('params', pagination, filters, sorter, extra);
 };
 const App = (props) => {
-  console.log(props, `<< columns`);
-  const [data, setData] = useState([]);
-  // if(props.columns) {
-  //   setData(props.columns)
-  // };
+  const router = useRouter();
+  const [selectionType, setSelectionType] = useState('checkbox');
 
-  // console.log(data, `<<<<< data`);
-
-    const [selectionType, setSelectionType] = useState('checkbox');
-    return (
-        <Table pagination={{ pageSize: 3, responsive: true, position: ['bottomCenter'] }} columns={columns} dataSource={props.dataTable} onChange={onChange} rowSelection={{
-            type: selectionType,
-            ...rowSelection,
-          }}/>
-    )
+  let newData;
+  if(props.dataTable.length > 0) {
+    newData = props.dataTable.map((e) => {
+      // console.log(e, `<<< e`);
+      return e = {
+        ...e,
+        'key' : e.id
+      }
+    });
+  }
+  return (
+      <Table 
+        style={{ cursor: 'pointer' }}
+        pagination={{ 
+          pageSize: 3, 
+          responsive: true, 
+          position: ['bottomCenter'] 
+        }} 
+        columns={columns} 
+        dataSource={newData} 
+        onChange={onChange} 
+        rowSelection={{
+          type: selectionType,
+          ...rowSelection,
+        }}
+        onRow={(record, rowIndex) => {
+          return {
+            onClick: event => { 
+                console.log(record, `< record`);
+                let name = record.name.toLowerCase();
+                name = name.split(' ').join('-');
+                router.push(`/profile/${name}`)
+            }, 
+          };
+        }}
+      />
+  )
 };
 export default App;

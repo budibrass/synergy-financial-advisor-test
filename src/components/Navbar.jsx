@@ -8,12 +8,12 @@ import {
 } from "@ant-design/icons";
 import logo from "../assets/images/logo.svg";
 import Image from "next/image";
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation';
 
 const { Header } = Layout;
 
 function Navbar() {
-  const router = useRouter()
+  const router = useRouter();
   return (
     <Header
       className="header"
