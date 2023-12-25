@@ -7,19 +7,36 @@ const columns = [
     dataIndex: 'name',
     onFilter: (value, record) => record.name.indexOf(value) === 0,
     sorter: (a, b) => a.name.length - b.name.length,
-    // sortDirections: ['descend'],
+  },
+  // {
+  //   title: 'Age',
+  //   dataIndex: 'age',
+  //   // defaultSortOrder: 'descend',
+  //   sorter: (a, b) => a.age - b.age,
+  // },
+  {
+    title: 'Gender',
+    dataIndex: 'gender',
+    onFilter: (value, record) => record.gender.indexOf(value) === 0,
+    sorter: (a, b) => a.gender.length - b.gender.length,
   },
   {
-    title: 'Age',
-    dataIndex: 'age',
-    // defaultSortOrder: 'descend',
-    sorter: (a, b) => a.age - b.age,
+    title: 'DOB',
+    dataIndex: 'dob',
+    onFilter: (value, record) => record.dob.indexOf(value) === 0,
+    sorter: (a, b) => a.dob.length - b.dob.length,
   },
   {
-    title: 'Address',
-    dataIndex: 'address',
-    onFilter: (value, record) => record.address.indexOf(value) === 0,
-    sorter: (a, b) => a.address.length - b.address.length,
+    title: 'Marital Status',
+    dataIndex: 'maritalStatus',
+    onFilter: (value, record) => record.maritalStatus.indexOf(value) === 0,
+    sorter: (a, b) => a.maritalStatus.length - b.maritalStatus.length,
+  },
+  {
+    title: 'Employment',
+    dataIndex: 'employmentStatus',
+    onFilter: (value, record) => record.employmentStatus.indexOf(value) === 0,
+    sorter: (a, b) => a.employmentStatus.length - b.employmentStatus.length,
   },
 ];
 
@@ -73,7 +90,7 @@ const data = [
       address: 'London No. 2 Lake Park',
     },
     
-  ];
+];
 
 const rowSelection = {
     onChange: (selectedRowKeys, selectedRows) => {
@@ -89,10 +106,18 @@ const rowSelection = {
 const onChange = (pagination, filters, sorter, extra) => {
   console.log('params', pagination, filters, sorter, extra);
 };
-const App = () => {
+const App = (props) => {
+  console.log(props, `<< columns`);
+  const [data, setData] = useState([]);
+  // if(props.columns) {
+  //   setData(props.columns)
+  // };
+
+  // console.log(data, `<<<<< data`);
+
     const [selectionType, setSelectionType] = useState('checkbox');
     return (
-        <Table pagination={{ pageSize: 3, responsive: true, position: ['bottomCenter'] }} columns={columns} dataSource={data} onChange={onChange} rowSelection={{
+        <Table pagination={{ pageSize: 3, responsive: true, position: ['bottomCenter'] }} columns={columns} dataSource={props.dataTable} onChange={onChange} rowSelection={{
             type: selectionType,
             ...rowSelection,
           }}/>

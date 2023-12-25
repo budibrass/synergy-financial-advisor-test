@@ -5,7 +5,7 @@ import TableData from "../components/Table";
 
 const { Search } = Input;
 
-const SuccessFetchingData = () => {
+const SuccessFetchingData = (props) => {
   const items = [
     {
       label: (
@@ -96,7 +96,7 @@ const SuccessFetchingData = () => {
           </a>
         </Dropdown>
       </Button>
-      <TableData />
+      <TableData dataTable={props.dataTable} />
     </div>
   );
 };

@@ -39,32 +39,32 @@ function Navbar() {
               {
                 label: "Acme Corp",
                 key: "acmeCorp",
-                onClick: ()=> router.push('/')
+                onClick: (e)=> {e.preventDefault, router.push('/')}
               },
               {
                 label: "Dashboard",
                 key: "dashboard",
-                onClick: ()=> router.push('/dashboard')
+                onClick: (e)=> {e.preventDefault, router.push('/dashboard')}
               },
               {
                 label: "CRM",
                 key: "crm",
-                onClick: ()=> router.push('/')
+                onClick: (e)=> {e.preventDefault, router.push('/')}
               },
               {
                 label: "Submission",
                 key: "submission",
-                onClick: ()=> router.push('/submission')
+                onClick: (e)=> {e.preventDefault, router.push('/submission')}
               },
               {
                 label: "Commission",
                 key: "commission",
-                onClick: ()=> router.push('/commission')
+                onClick: (e)=> {e.preventDefault, router.push('/commission')}
               },
               {
                 label: "LMS",
                 key: "lms",
-                onClick: ()=> router.push('/lms')
+                onClick: (e)=> {e.preventDefault, router.push('/lms')}
               },
             ]}
           ></Menu>

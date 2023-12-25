@@ -1,8 +1,14 @@
-import React from 'react'
+import React from 'react';
+import Navbar from '@/components/Navbar';
+import NotFound from '@/components/NotFound';
+import { Layout } from 'antd';
 
 const Dashboard = () => {
   return (
-    <div>Ini Dashboard</div>
+    <Layout className="container" style={{ minHeight: "100vh" }} >
+      <Navbar />
+      <NotFound />
+    </Layout>
   )
 }
 

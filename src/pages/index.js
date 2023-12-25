@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Avatar,
   Col,
@@ -206,21 +206,25 @@ const App = () => {
   const dispatch = useDispatch();
   const value = useSelector(state => state.user.value);
   const data = useSelector(state => state.user.data);
+  const isLoading = useSelector(state => state.user.isLoading); 
 
   useEffect(() => {
-    dispatch(getData())
+    dispatch(getData());
   }, []);
 
-  console.log(data, `<<< data`);
+  // console.log(data, `<<< data`);
   return (
-    <Layout className="container" style={{ minHeight: "100vh" }}>
+    <>
+    {isLoading ? 'Loading...' : <Layout className="container" style={{ minHeight: "100vh" }}>
       <Navbar />
-      <CrmFetchData />
+      <CrmFetchData dataTable={data} />
 
       {/* Profile Clients Start */}
       {/* <DetailProfileCilents /> */}
       {/* Profile Clients End */}
-    </Layout>
+    </Layout>}
+    </>
+    
   );
 };
 

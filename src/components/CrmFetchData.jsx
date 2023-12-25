@@ -21,35 +21,32 @@ const { Content } = Layout;
 const { Title } = Typography;
 const { Search } = Input;
 
-const onChange = (key) => {
-  console.log(key);
-};
 
-const itemsDropdown = [
-  {
-    key: "1",
-    label: "Client",
-    children: (
-      // ERROR CARD
-      // <ErrorFetching />
+const CrmFetchData = (props) => {
+  const onChange = (key) => {
+    console.log(key);
+  };
+  
+  const itemsDropdown = [
+    {
+      key: "1",
+      label: "Client",
+      children: (
+        props.dataTable.length > 0 ?  <SuccessFetchingData dataTable={props.dataTable} /> : <ErrorFetching />
+      ),
+    },
+    {
+      key: "2",
+      label: "Policy",
+      children: "Policy Tabs",
+    },
+    {
+      key: "3",
+      label: "Support",
+      children: "Support Tabs",
+    },
+  ];
 
-      // FETCH Data
-      <SuccessFetchingData />
-    ),
-  },
-  {
-    key: "2",
-    label: "Policy",
-    children: "Policy Tabs",
-  },
-  {
-    key: "3",
-    label: "Support",
-    children: "Support Tabs",
-  },
-];
-
-const CrmFetchData = () => {
   return (
     <Content style={{ background: "#ffffff", padding: "0 48px" }}>
       <div
