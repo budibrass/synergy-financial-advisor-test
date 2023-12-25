@@ -1,44 +1,24 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import {
-  Avatar,
-  Col,
-  Menu,
-  Row,
+  // Spin,
   Layout,
-  Divider,
-  Typography,
-  Tabs,
-  Card,
   Button,
-  Table,
   Input,
   Dropdown, 
   Space,
   Checkbox
 } from "antd";
 import {
-  BellOutlined,
-  SettingOutlined,
-  SearchOutlined,
-  UserOutlined,
-  WarningOutlined,
-  ArrowLeftOutlined,
-  DownOutlined,
   PlusCircleOutlined
 } from "@ant-design/icons";
-import logo from "../assets/images/logo.svg";
-import Image from "next/image";
 import TableData from "../components/Table";
 import Navbar from "@/components/Navbar";
-import NotFound from "@/components/NotFound";
-import DetailProfileCilents from "@/components/DetailProfileCilents";
 import CrmFetchData from "@/components/CrmFetchData";
 import { useDispatch, useSelector } from "react-redux";
 import { getData } from "@/reducer/user";
+import Loading from "@/components/Loading";
 
-const { Content, Header } = Layout;
-const { Text, Link, Title } = Typography;
 const { Search } = Input;
 
 const onChange = (key) => {
@@ -215,13 +195,9 @@ const App = () => {
   // console.log(data, `<<< data`);
   return (
     <>
-    {isLoading ? 'Loading...' : <Layout className="container" style={{ minHeight: "100vh" }}>
+    {isLoading ? <Loading /> : <Layout className="container" style={{ minHeight: "100vh" }}>
       <Navbar />
       <CrmFetchData dataTable={data} />
-
-      {/* Profile Clients Start */}
-      {/* <DetailProfileCilents /> */}
-      {/* Profile Clients End */}
     </Layout>}
     </>
     

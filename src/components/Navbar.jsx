@@ -44,7 +44,7 @@ function Navbar() {
               {
                 label: "Dashboard",
                 key: "dashboard",
-                onClick: (e)=> {e.preventDefault, router.push('/dashboard')}
+                onClick: (e)=> {e.preventDefault, router.push('/Dashboard')}
               },
               {
                 label: "CRM",
@@ -54,17 +54,17 @@ function Navbar() {
               {
                 label: "Submission",
                 key: "submission",
-                onClick: (e)=> {e.preventDefault, router.push('/submission')}
+                onClick: (e)=> {e.preventDefault, router.push('/Submission')}
               },
               {
                 label: "Commission",
                 key: "commission",
-                onClick: (e)=> {e.preventDefault, router.push('/commission')}
+                onClick: (e)=> {e.preventDefault, router.push('/Commission')}
               },
               {
                 label: "LMS",
                 key: "lms",
-                onClick: (e)=> {e.preventDefault, router.push('/lms')}
+                onClick: (e)=> {e.preventDefault, router.push('/Lms')}
               },
             ]}
           ></Menu>
