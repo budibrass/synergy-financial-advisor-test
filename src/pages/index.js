@@ -1,4 +1,5 @@
 "use client";
+import React, { useEffect } from "react";
 import {
   Avatar,
   Col,
@@ -33,6 +34,8 @@ import Navbar from "@/components/Navbar";
 import NotFound from "@/components/NotFound";
 import DetailProfileCilents from "@/components/DetailProfileCilents";
 import CrmFetchData from "@/components/CrmFetchData";
+import { useDispatch, useSelector } from "react-redux";
+import { getData } from "@/reducer/user";
 
 const { Content, Header } = Layout;
 const { Text, Link, Title } = Typography;
@@ -59,7 +62,6 @@ const items = [
     key: '3',
   },
 ];
-
 
 const itemsDropdown = [
   {
@@ -201,6 +203,15 @@ const data = [
 ];
 
 const App = () => {
+  const dispatch = useDispatch();
+  const value = useSelector(state => state.user.value);
+  const data = useSelector(state => state.user.data);
+
+  useEffect(() => {
+    dispatch(getData())
+  }, []);
+
+  console.log(data, `<<< data`);
   return (
     <Layout className="container" style={{ minHeight: "100vh" }}>
       <Navbar />
