@@ -4,23 +4,13 @@ import {
   Divider,
   Typography,
   Tabs,
-  Button,
   Input,
-  Dropdown,
-  Space,
-  Checkbox,
-  Row,
-  Col,
-  Card
 } from "antd";
-import { PlusCircleOutlined, WarningOutlined } from "@ant-design/icons";
 import ErrorFetching from "./ErrorFetching";
 import SuccessFetchingData from "./SuccessFetchingData";
 
 const { Content } = Layout;
 const { Title } = Typography;
-const { Search } = Input;
-
 
 const CrmFetchData = (props) => {
   const onChange = (key) => {
@@ -34,7 +24,6 @@ const CrmFetchData = (props) => {
       children: (
         props.dataTable.length > 0 ?  <SuccessFetchingData dataTable={props.dataTable} /> : <ErrorFetching />
       ),
-      // children: <SuccessFetchingData dataTable={props.dataTable} />
     },
     {
       key: "2",

@@ -1,102 +1,51 @@
-import React from "react";
-import { Button, Input, Dropdown, Space, Checkbox } from "antd";
-import { PlusCircleOutlined } from "@ant-design/icons";
+import React, { useState } from "react";
+import { Input } from "antd";
 import TableData from "../components/Table";
+import ButtonGenderFilter from "./ButtonGenderFilter";
+import ButtonMaritalStatus from "./ButtonMaritalStatus";
+import ButtonEmploymentFilter from "./ButtonEmploymentFilter";
 
 const { Search } = Input;
 
 const SuccessFetchingData = (props) => {
-  const items = [
-    {
-      label: (
-        <Checkbox onClick={() => console.log(`MASUK`)}>1st menu item</Checkbox>
-      ),
-      key: "0",
-    },
-    {
-      label: (
-        <Checkbox onClick={() => console.log(`MASUK`)}>2st menu item</Checkbox>
-      ),
-      key: "1",
-    },
-    {
-      label: (
-        <Checkbox onClick={() => console.log(`MASUK`)}>3st menu item</Checkbox>
-      ),
-      key: "3",
-    },
-  ];
+  const [searchParams, setSearchParams] = useState('');
+  const [genderParams, setGenderParams] = useState({});
+  const [statusParams, setStatusParams] = useState({});
+  const [employmentParams, setEmploymentParams] = useState({});
+
+  const onSearch = (e) => {
+    setSearchParams(e.target.value);
+  };
+
+  const getValueGender = (value) => {
+    setGenderParams(value)
+  };
+
+  const getValueStatus = (value) => {
+    setStatusParams(value)
+  };
+
+  const getValueEmployment = (value) => {
+    setEmploymentParams(value)
+  };
 
   return (
     <div>
       <Search
-        placeholder="input search text"
+        placeholder="Search by name"
         allowClear
         // onSearch={onSearch}
+        onChange={onSearch}
         style={{
           width: "320px",
           marginBottom: "10px",
           marginRight: "10px",
         }}
       />
-      <Button
-        style={{
-          borderRadius: "16px",
-          background: "#F9FAFB",
-          marginRight: "10px",
-        }}
-      >
-        <Dropdown
-          menu={{
-            items,
-          }}
-          trigger={["click"]}
-        >
-          <a onClick={(e) => e.preventDefault()}>
-            <Space>
-              <PlusCircleOutlined />
-              Gender
-            </Space>
-          </a>
-        </Dropdown>
-      </Button>
-      <Button
-        style={{
-          borderRadius: "16px",
-          background: "#F9FAFB",
-          marginRight: "10px",
-        }}
-      >
-        <Dropdown
-          menu={{
-            items,
-          }}
-          trigger={["click"]}
-        >
-          <a onClick={(e) => e.preventDefault()}>
-            <Space>
-              <PlusCircleOutlined />
-              Marital Status
-            </Space>
-          </a>
-        </Dropdown>
-      </Button>
-      <Button style={{ borderRadius: "16px", background: "#F9FAFB" }}>
-        <Dropdown
-          menu={{
-            items,
-          }}
-          trigger={["click"]}
-        >
-          <a onClick={(e) => e.preventDefault()}>
-            <Space>
-              <PlusCircleOutlined />
-              Employment
-            </Space>
-          </a>
-        </Dropdown>
-      </Button>
-      <TableData dataTable={props.dataTable} />
+      <ButtonGenderFilter filterGenderParams={getValueGender} />
+      <ButtonMaritalStatus filterStatusParams={getValueStatus} />
+      <ButtonEmploymentFilter filterEmploymentParams={getValueEmployment} />
+      <TableData employmentParams={employmentParams} statusParams={statusParams} genderParams={genderParams} searchParams={searchParams} dataTable={props.dataTable} />
     </div>
   );
 };
