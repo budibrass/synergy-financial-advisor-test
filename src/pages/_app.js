@@ -1,12 +1,16 @@
-import '@/styles/globals.css';
-import { Provider } from 'react-redux';
-import store from '@/reducer/store';
+import 'antd/dist/reset.css';
 
-// export default function App({ Component, pageProps }) {
-//   return <Component {...pageProps} />
-// }
-export default function App({ Component, pageProps }) {
-  return <Provider store={store}>
-    <Component {...pageProps} />
-  </Provider>
+import { Provider } from 'react-redux';
+import { ConfigProvider } from 'antd';
+import theme from '../../themeConfig';
+import { wrapper } from '@/lib/store';
+
+function App({ Component, pageProps }) {
+  return (
+    <ConfigProvider theme={theme}>
+      <Component {...pageProps} />
+    </ConfigProvider>
+  );
 }
+
+export default wrapper.withRedux(App);

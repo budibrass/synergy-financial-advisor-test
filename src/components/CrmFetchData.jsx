@@ -1,66 +1,75 @@
-import React from "react";
-import {
-  Layout,
-  Divider,
-  Typography,
-  Tabs,
-  Input,
-} from "antd";
-import ErrorFetching from "./ErrorFetching";
-import SuccessFetchingData from "./SuccessFetchingData";
+import React from 'react';
+import { Layout, Divider, Typography, Tabs } from 'antd';
+import ErrorFetching from './ErrorFetching';
+import SuccessFetchingData from './SuccessFetchingData';
+import { useSelector } from 'react-redux';
+import Loading from './Loading';
 
 const { Content } = Layout;
 const { Title } = Typography;
 
-const CrmFetchData = (props) => {
+const CrmFetchData = ({ isError, dataTable }) => {
+  const { clientList, isLoading } = useSelector((state) => state.acmeStore);
+
   const onChange = (key) => {
     console.log(key);
   };
-  
+
+  let data = [];
+  if (dataTable.length) {
+    data = dataTable;
+  } else if (clientList.length) {
+    data = clientList;
+  }
+
   const itemsDropdown = [
     {
-      key: "1",
-      label: "Client",
+      key: '1',
+      label: 'Client',
       children: (
-        props.dataTable.length > 0 ?  <SuccessFetchingData dataTable={props.dataTable} /> : <ErrorFetching />
+        <>
+          {isLoading && <Loading />}
+          {isError && !clientList.length ? (
+            <ErrorFetching />
+          ) : (
+            <SuccessFetchingData dataTable={data} />
+          )}
+        </>
       ),
     },
     {
-      key: "2",
-      label: "Policy",
-      children: "Policy Tabs",
+      key: '2',
+      label: 'Policy',
+      children: 'Policy Tabs',
     },
     {
-      key: "3",
-      label: "Support",
-      children: "Support Tabs",
+      key: '3',
+      label: 'Support',
+      children: 'Support Tabs',
     },
   ];
 
   return (
-    <Content style={{ background: "#ffffff", padding: "0 48px" }}>
+    <Content>
       <div
-        className="pageHeader"
+        className='pageHeader'
         style={{
-          top: "102px",
-          height: "59px",
-          // left: '112px',
-          gap: "20px",
-          border: "20px",
-          // background: "brown",
-          // borderRadius: "20px"
+          top: '102px',
+          height: '59px',
+          gap: '20px',
+          border: '20px',
         }}
       >
-        <Title level={4} style={{ color: "black", paddingTop: "10px" }}>
+        <Title level={4} style={{ color: 'black', paddingTop: '10px' }}>
           CRM
         </Title>
         <Divider />
       </div>
 
-      <div className="tabs">
+      <div className='tabs'>
         <Tabs
-          style={{ height: "36px" }}
-          defaultActiveKey="1"
+          style={{ height: '36px' }}
+          defaultActiveKey='1'
           items={itemsDropdown}
           onChange={onChange}
         />
