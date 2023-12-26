@@ -7,9 +7,9 @@ const App = (props) => {
     {
       title: 'Name',
       dataIndex: 'name',
-      filteredValue: [props.searchParams],
+      filteredValue: [props.searchParams.toLowerCase()],
       onFilter: (value, record) => {
-        return record.name.includes(value);
+        return record.name.toLowerCase().includes(value);
       },
       sorter: (a, b) => a.name.length - b.name.length,
       fixed: 'left',
